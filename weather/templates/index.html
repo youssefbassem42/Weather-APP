@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/7bed3c335a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Home</title>
+</head>
+<body data-static-url="{% static '' %}">
+        <div class="status-banner" id="status-banner" hidden>
+            <p id="status-message"></p>
+        </div>
+    <div class="weather-app" id="weather-app" style="background-image: url('{% static 'images/day/clear.jpg' %}');">
+        <div class="container">
+            <h3 class="brand"> Weather App</h3>
+            <div>
+                <h1 class="temp" id="current-temp">--&#176;</h1>
+                <div class="city-time">
+                    <h1 class="name" id="current-city">waiting for location</h1>
+                    <small>
+                        <span class="time" id="current-time">--:--</span>
+                        -
+                        <span class="date" id="current-date">
+                            -- --
+                        </span>
+                    </small>
+                </div>
+                <div class="weather">
+                    <img
+                        src="https://openweathermap.org/img/wn/01d@2x.png"
+                        class="icon"
+                        alt="weather icon"
+                        width="50"
+                        height="50"
+                        id="weather-icon"
+                    />
+                    <span class="condition" id="weather-condition">--</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel">
+            <form id="location-form">
+                <input
+                    type="text"
+                    class="search"
+                    id="city-input"
+                    placeholder="search location..."
+                    autocomplete="off"
+                    />
+                    <button type="submit" class="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+            </form>
+            <button type="button" class="use-location" id="use-location-btn">
+                <i class="fas fa-location-arrow"></i>
+                <span>Use my location</span>
+            </button>
+            <ul class="cities">
+                <li class="city" data-city="cairo">Cairo</li>
+                <li class="city" data-city="new york">New york</li>
+                <li class="city" data-city="paris">Paris</li>
+                <li class="city" data-city="barcelona">Barcelona</li>
+            </ul>
+            <ul class="details">
+                <h4>Weather Details</h4>
+                <li>
+                    <span>Clouds</span>
+                    <span class="cloud" id="cloud-cover">--%</span>
+                </li>
+                <li>
+                    <span>humidity</span>
+                    <span class="humidity" id="humidity">--%</span>
+                </li>
+                <li>
+                    <span>wind speed</span>
+                    <span class="wind" id="wind-speed">-- km/h</span>
+                </li>
+                <li>
+                    <span>wind direction</span>
+                    <span class="wind-deg" id="wind-direction">--&#176;</span>
+                </li>
+            </ul>
+            <div class="error-message" id="error-message" hidden></div>
+        </div>
+    </div>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
