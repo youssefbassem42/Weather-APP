@@ -86,14 +86,6 @@ OPENWEATHER_API_KEY=your_api_key_here
 python manage.py runserver
 ```
 
----
-
-## 📸 Screenshots (Optional)
-
-Add UI images here.
-
----
-
 ## 📜 License
 
 This project is open-source and free to use.
