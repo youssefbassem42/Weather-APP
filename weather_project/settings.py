@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
+from django.conf.global_settings import MEDIA_ROOT
 import environ, os
 
 environ.environ.Env()
@@ -25,9 +26,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env.str('SECRET_KEY')
+SECRET_KEY = 'django-insecure-2049o9y)qlk9i#egyjf43cxks^m&3l799k&7n25g6#zpeceh#h'
+
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', '.now.sh']
 
@@ -117,16 +119,16 @@ USE_TZ = True
 
 
 # API KEYS
-OPENWEATHER_API_KEY = env.str('WEATHER_API')
+OPENWEATHER_API_KEY = 'f32740e04f057d0b9798e9357267d89a'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-STATIC_URL = 'static/'
+STATIC_URL = 'staticfiles/'
 STATICFILES_DIRS = STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'weather_app/static'),
+    os.path.join(BASE_DIR, 'weather/staticfiles'),
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
