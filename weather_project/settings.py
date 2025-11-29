@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-import environ
+import environ, os
 
 environ.environ.Env()
 env = environ.Env()
@@ -25,12 +25,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-2049o9y)qlk9i#egyjf43cxks^m&3l799k&7n25g6#zpeceh#h'
-
+SECRET_KEY = env.str('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', '.now.sh']
 
 
 # Application definition
@@ -78,12 +77,12 @@ WSGI_APPLICATION = 'weather_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
@@ -126,7 +125,9 @@ OPENWEATHER_API_KEY = env.str('WEATHER_API')
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATIC_URL = 'static/'
-
+STATICFILES_DIRS = STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'weather_app/static'),
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
